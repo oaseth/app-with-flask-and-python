@@ -1,10 +1,17 @@
+from os import environ
 from sqlalchemy import Column, Integer, String, ForeignKey
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker, relationship
 from sqlalchemy.ext.declarative import declarative_base
 
-engine = create_engine(
-    "postgresql://postgres:********@localhost:5432/project_tracker")
+# Database name
+dbname = "project_tracker"
+
+# Get Postgresql URI variable from Conda environment
+postgresql_uri = environ.get('POSTGRESQL_URI')
+
+# Create engine
+engine = create_engine(postgresql_uri + dbname)
 
 Base = declarative_base()
 
