@@ -7,6 +7,6 @@ This repository contains the project work for the Flask section of the Advanced 
 - SQLAlchemy(Core and ORM)
 
 ## Techniques implemented
-- PostgreSQL Database creation
+- PostgreSQL database creation
 - Database manipulation and rendering the output with HTML
 - Loading of database credentials from a config file
