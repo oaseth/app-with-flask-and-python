@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projects</title>
+</head>
+
+<body>
+    <h1>Projects</h1>
+
+    <ul>
+        {% for project in projects %}
+        <li><a href="/project/{{ project.project_id }}">{{ project.title }}</a></li>
+        {% endfor %}
+
+    </ul>
+
+    <br>
+
+    <h3>Add new projects</h3>
+    <form action="/add/project" method="post">
+        <div>Project Name: <input type="text" name="project-title"></div>
+        <br>
+        <input type="submit" value="Add Project">
+    </form>
+    <br>
+    {% for category, message in get_flashed_messages(with_categories=true) %}
+    <div style="color: {{ category }}">{{ message }}</div>
+    {% endfor %}
+
+</body>
+
+</html>

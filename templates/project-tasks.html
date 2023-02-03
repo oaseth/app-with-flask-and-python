@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>{{ project.title }}</h1>
+
+    <ul>
+        {% for task in tasks %}
+        <li>{{ task.description }}</li>
+        <form action="/delete/task/{{ task.task_id }}" method="post">
+            <input type="submit" value="Delete Task">
+        </form>
+        {% endfor %}
+        <!-- <li>Task 2</li>
+        <li>Task 3</li> -->
+    </ul>
+
+    <h3>Add new Task</h3>
+    <form action="/add/task/{{ project.project_id }}" method="post">
+        <div>
+            Task: <input type="text" name="task-description">
+        </div>
+        <br>
+        <input type="submit" value="Add Task">
+    </form>
+
+    <h3>Delete Project</h3>
+    <form action="/delete/project/{{ project.project_id }}" method="post">
+        <div>
+            <input type="submit" value="Delete Project">
+        </div>
+    </form>
+    <br>
+    {% for category, message in get_flashed_messages(with_categories=true) %}
+    <div style="color: {{ category }}">{{ message }}</div>
+    {% endfor %}
+</body>
+
+</html>
